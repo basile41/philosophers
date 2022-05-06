@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/06 17:45:27 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/06 21:48:15 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/06 22:40:29 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,16 @@ INC				=	-I ./inc
 SRC_PATH		=	./src/
 OBJ_PATH		=	./obj/
 
-_PATH		=	
+UTILS_DIR		=	utils/
 
 OBJ_DIRS		=	$(OBJ_PATH) \
-					# $(addprefix $(OBJ_PATH),parser/ builtins/ exec/ utils/)
+					$(addprefix $(OBJ_PATH), utils/)
+
+SRC_UTILS		=	ft_atoi.c \
 
 SRC				= 	main.c \
 					philo.c \
-#					$(addprefix $(PARSER_PATH), $(SRC_PARSER))
+					$(addprefix $(PARSER_PATH), $(SRC_UTILS))
 					
 OBJ				=	$(addprefix $(OBJ_PATH),$(SRC:.c=.o))
 DEPS			=	$(addprefix $(OBJ_PATH),$(SRC:.c=.d))

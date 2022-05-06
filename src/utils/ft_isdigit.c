@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bregneau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:59:21 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/07 00:53:41 by bregneau         ###   ########.fr       */
+/*   Created: 2021/11/22 15:42:45 by bregneau          #+#    #+#             */
+/*   Updated: 2021/11/22 17:35:54 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	ft_is_dead(t_philo *p)
+int	ft_isdigit(int c)
 {
-
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
-
-void	*ft_philo(void *arg)
-{
-	t_philo	*p;
-
-	p = arg;
-	while (p->eaten != p->arg->nb_of_meal && !ft_is_dead(p))
-	{
-		
-	}
-}
-

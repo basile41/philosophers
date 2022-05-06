@@ -1,30 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:59:21 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/07 00:53:41 by bregneau         ###   ########.fr       */
+/*   Created: 2021/11/25 21:36:46 by bregneau          #+#    #+#             */
+/*   Updated: 2022/05/06 22:42:36 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_is_dead(t_philo *p)
+int	ft_isspace(int c)
 {
-
+	if (c == ' ' || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
 }
 
-void	*ft_philo(void *arg)
+int	ft_isdigit(int c)
 {
-	t_philo	*p;
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
-	p = arg;
-	while (p->eaten != p->arg->nb_of_meal && !ft_is_dead(p))
+int	ft_atoi(const char *str)
+{
+	unsigned int	i;
+	int				s;
+	char			*a;
+
+	a = (char *)str;
+	while (ft_isspace(*a))
+		a++;
+	s = 1;
+	if (*a == '-')
 	{
-		
+		a++;
+		s = -1;
 	}
+	else if (*a == '+')
+		a++;
+	i = 0;
+	while (ft_isdigit(*a))
+	{
+		i = i * 10 + *a - '0';
+		a++;
+	}
+	return (i * s);
 }
-
