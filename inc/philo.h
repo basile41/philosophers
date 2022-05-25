@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/07 00:51:44 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/05/25 11:54:09 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	struct timeval	time;
 	int				nb_of_philo;
 	int				t_to_die;
 	int				t_to_sleep;
@@ -58,7 +57,6 @@ void	*ft_philo(void *arg);
 
 int		ft_atoi(const char *str);
 int		ft_return_error(char *message);
-int		ft_diff_time(struct timeval *time_zero);
-
+int		ft_get_time(int d);
 
 #endif

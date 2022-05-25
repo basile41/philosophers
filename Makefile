@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/06 17:45:27 by bregneau          #+#    #+#              #
-#    Updated: 2022/05/21 20:54:17 by bregneau         ###   ########.fr        #
+#    Updated: 2022/05/25 19:50:15 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJ =		$(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 DEPS			=	$(addprefix $(OBJ_PATH),$(SRC:.c=.d))
 
-# LIBS			=	-lreadline -Llibft -lft
+LIBS			=	-lpthread
 
 INC				=	-I ./inc
 
@@ -49,7 +49,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ)
-					$(CC) $(OBJ) -o $(NAME) #-fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
 
 clean:		
 					rm -rf $(OBJ_PATH)
