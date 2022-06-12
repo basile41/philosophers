@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/25 11:54:09 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/11 19:23:04 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,32 @@ typedef struct s_arg
 	int	nb_of_meal;
 }	t_arg;
 
+typedef struct s_fork
+{
+	int				status;
+	pthread_mutex_t	*mutex;
+}	t_fork;
+
 typedef struct s_philo
 {
 	int			id;
-	int			*my_fork[2];
+	pthread_t	th;
+	t_fork		*my_fork[2];
 	int			eaten;
-	t_arg		*arg;
+	t_arg		arg;
 }	t_philo;
 
 typedef struct s_data
 {
-	int				nb_of_philo;
-	int				t_to_die;
-	int				t_to_sleep;
-	int				nb_of_meal;
-	t_philo			philo_tab[200];
-	int				fork_tab[200];
+	t_arg		arg;
+	t_philo		*philo_tab;
+	t_fork		*fork_tab;
 }	t_data;
 
-void	*ft_philo(void *arg);
+//threads
+
+void	*ft_philo_routine(void *arg);
+
 
 //utils
 

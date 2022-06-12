@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 20:27:29 by bregneau          #+#    #+#             */
-/*   Updated: 2022/05/25 19:50:50 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:17:00 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	ft_get_time(int d)
 	int						msec;
 
 	if (d)
+	{
 		return (pthread_mutex_destroy(&mutex));
+		memset(&init_time, 0, sizeof(init_time));
+	}
 	if (init_time.tv_usec == 0)
 	{
 		if (gettimeofday(&init_time, 0) == -1)
