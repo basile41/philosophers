@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 15:28:47 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/24 15:29:51 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/25 19:37:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_init(t_data *data)
 	int		i;
 	t_philo	*p;
 
-	p = malloc(data->arg.nb_of_philo * sizeof(t_philo));
-	data->fork_tab = malloc(data->arg.nb_of_philo * sizeof(t_fork));
+	p = ft_calloc(data->arg.nb_of_philo, sizeof(t_philo));
+	data->fork_tab = ft_calloc(data->arg.nb_of_philo, sizeof(t_fork));
 	if (p == NULL || data->fork_tab == NULL)
 		return (ft_return_error("malloc error"));
 	data->philo_tab = p;

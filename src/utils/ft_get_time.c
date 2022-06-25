@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 20:27:29 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/23 13:52:08 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:46:08 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 // 	return (msec);
 // }
 
-int	ft_get_time(void)
+int	ft_get_time(int start)
 {
 	static struct timeval	init_time;
 	struct timeval			time;
@@ -55,12 +55,12 @@ int	ft_get_time(void)
 	gettimeofday(&time, 0);
 	msec = (time.tv_sec - init_time.tv_sec) * 1000
 		+ (time.tv_usec - init_time.tv_usec) / 1000;
-	return (msec);
+	return (msec - start);
 }
 
 // int main()
 // {
-// 	printf("%d\n", ft_get_time());
+// 	printf("%d\n", ft_get_time(0));
 // 	usleep(42000);
-// 	printf("%d\n", ft_get_time());
+// 	printf("%d\n", ft_get_time(0));
 // }
