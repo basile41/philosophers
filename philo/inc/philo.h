@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/25 20:17:34 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:12:51 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define RIGHT 0
 # define LEFT 1
 
-# define THINKING 0 
+# define THINKING 0
 # define EATING 1
 # define SLEEPING 2
 # define DEAD 3
