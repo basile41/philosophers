@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/25 21:12:51 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/26 15:49:45 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	ft_release_fork(t_fork *fork);
 void	ft_try_to_eat(t_philo *philo);
 void	ft_start_to_sleep(t_philo *p);
 void	ft_sleeping(t_philo *p);
+void	ft_sleep(t_philo *p, int sleep_time);
 
 int		ft_return_error(char *message);
 int		ft_get_time(int start);

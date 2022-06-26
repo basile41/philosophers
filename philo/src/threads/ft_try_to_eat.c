@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:03:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/25 20:12:34 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:29:35 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_take_fork(t_philo *p, t_fork *fork)
 		success = 0;
 	pthread_mutex_unlock(&fork->mutex);
 	if (success)
-		ft_safe_print(p->id, "has taken a fork", p->print_mutex);
+		ft_safe_print(p, "has taken a fork");
 	return (success);
 }
 
@@ -53,7 +53,7 @@ void	ft_try_to_eat(t_philo *p)
 	}
 	if (p->hand[RIGHT] && p->hand[LEFT])
 	{
-		p->start = ft_safe_print(p->id, "is eating", p->print_mutex);
+		p->start = ft_safe_print(p, "is eating");
 		p->last_meal = p->start;
 		p->state = EATING;
 	}
