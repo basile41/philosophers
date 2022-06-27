@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 13:27:20 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/25 21:10:37 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:00:49 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,21 @@
 // 	return (0);
 // }
 
-int	ft_safe_print(int x, char *str, pthread_mutex_t *mutex)
+void	ft_end_of_sim(t_philo *p, int value)
+{
+	pthread_mutex_lock(p->print_mutex);
+	*p->is_end = value;
+	pthread_mutex_unlock(p->print_mutex);
+}
+
+int	ft_safe_print(t_philo *p, char *str)
 {
 	int	time;
 
 	time = ft_get_time(0);
-	pthread_mutex_lock(mutex);
-	printf("%05d %d %s\n", time, x, str);
-	pthread_mutex_unlock(mutex);
+	pthread_mutex_lock(p->print_mutex);
+	if (*p->is_end == 0)
+		printf("%05d %d %s\n", time, p->id, str);
+	pthread_mutex_unlock(p->print_mutex);
 	return (time);
 }

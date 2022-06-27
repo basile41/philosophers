@@ -6,23 +6,40 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:52:59 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/25 20:28:54 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/27 14:54:06 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_philo_end(t_philo *p)
+void	ft_threads_join(t_data *data)
 {
-	int	i;
+	int		i;
+	t_philo	*p;
 
+	p = data->philo_tab;
 	i = 0;
-	while (i < p->arg.nb_of_philo)
+	while (i < data->arg.nb_of_philo)
 	{
 		pthread_join(p->th, 0);
 		i++;
 		p++;
 	}
+}
+
+void	ft_destroy(t_data *data)
+{
+	int		i;
+
+	pthread_mutex_destroy(&data->print_mutex);
+	i = 0;
+	while (i < data->arg.nb_of_philo)
+	{
+		pthread_mutex_destroy(&data->fork_tab[i].mutex);
+		i++;
+	}
+	free(data->philo_tab);
+	free(data->fork_tab);
 }
 
 void	ft_set_arg(t_arg *arg, int argc, char **argv)
@@ -47,8 +64,9 @@ int	main(int argc, char **argv)
 		ft_get_time(0);
 		ft_set_arg(&data.arg, argc, argv);
 		ft_init(&data);
-		ft_philo_end(data.philo_tab);
-		free(data.philo_tab);
-		free(data.fork_tab);
+		ft_threads_join(&data);
+		ft_destroy(&data);
+		// if (data.is_end > 0)
+		// 	printf("%05d %d %s\n",ft_get_time(0), data.is_end, "died");
 	}
 }

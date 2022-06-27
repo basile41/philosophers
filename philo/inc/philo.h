@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/26 15:49:45 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:57:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ int		ft_init(t_data *data);
 
 void	*ft_philo_routine(void *arg);
 
+int		ft_take_fork(t_philo *philo, t_fork *fork);
+void	ft_release_fork(t_fork *fork);
+void	ft_try_to_eat(t_philo *philo);
+void	ft_eating(t_philo *p);
+void	ft_start_to_sleep(t_philo *p);
+void	ft_sleeping(t_philo *p);
+void	ft_sleep(t_philo *p, int sleep_time);
+
 //utils
 
 int		ft_atoi(const char *str);
@@ -84,16 +92,12 @@ char	*ft_strcpy(char *dst, const char *src);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 void	*ft_calloc(size_t count, size_t size);
 
-int		ft_take_fork(t_philo *philo, t_fork *fork);
-void	ft_release_fork(t_fork *fork);
-void	ft_try_to_eat(t_philo *philo);
-void	ft_start_to_sleep(t_philo *p);
-void	ft_sleeping(t_philo *p);
-void	ft_sleep(t_philo *p, int sleep_time);
 
 int		ft_return_error(char *message);
 int		ft_get_time(int start);
 // void	ft_putstr_mutex(char *str, pthread_mutex_t *mutex);
-int		ft_safe_print(int x, char *str, pthread_mutex_t *mutex);
+int		ft_safe_print(t_philo *p, char *str);
+void	ft_nb_of_meal(t_philo *p);
+void	ft_end_of_sim(t_philo *p, int value);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:07:24 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/26 20:09:04 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/27 11:37:04 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_start_to_sleep(t_philo *p)
 		ft_nb_of_meal(p);
 	ft_release_fork(p->my_fork[RIGHT]);
 	ft_release_fork(p->my_fork[LEFT]);
-	
 	p->hand[RIGHT] = 0;
 	p->hand[LEFT] = 0;
 	p->state = SLEEPING;

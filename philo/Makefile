@@ -6,7 +6,7 @@
 #    By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/06 17:45:27 by bregneau          #+#    #+#              #
-#    Updated: 2022/06/19 15:22:27 by bregneau         ###   ########.fr        #
+#    Updated: 2022/06/27 14:20:23 by bregneau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):			$(OBJ)
-					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=address
+					$(CC) $(OBJ) $(LIBS) -o $(NAME) #-fsanitize=thread
 
 clean:		
 					rm -rf $(OBJ_PATH)

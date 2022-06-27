@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:47:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/26 20:32:39 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:15:46 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_die(t_philo *p)
 {
+	ft_safe_print(p, "died");
 	pthread_mutex_lock(p->print_mutex);
 	*p->is_end = p->id;
 	pthread_mutex_unlock(p->print_mutex);
-	ft_safe_print(p, "died");
 }
 
 int	ft_is_end(t_philo *p)
@@ -39,8 +39,8 @@ void	*ft_philo_routine(void *arg)
 	p = (t_philo *)arg;
 	if (p->id % 2 == 0)
 		usleep(10000);
-	else if (p->id == p->arg.nb_of_philo)
-		usleep(10000 + p->arg.t_to_eat);
+	// else if (p->id == p->arg.nb_of_philo)
+	// 	usleep(10000 + p->arg.t_to_eat);
 	// ft_safe_print(p->id, "coucou", p->print_mutex);
 	p->last_meal = 0;
 	while (42)
