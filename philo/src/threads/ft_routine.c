@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:47:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/27 15:15:46 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:10:47 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*ft_philo_routine(void *arg)
 
 	p = (t_philo *)arg;
 	if (p->id % 2 == 0)
-		usleep(10000);
+		ft_sleep(p, p->arg.t_to_eat);
 	// else if (p->id == p->arg.nb_of_philo)
 	// 	usleep(10000 + p->arg.t_to_eat);
 	// ft_safe_print(p->id, "coucou", p->print_mutex);
