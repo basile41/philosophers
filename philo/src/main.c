@@ -6,53 +6,11 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:52:59 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/27 14:54:06 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/29 15:15:56 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	ft_threads_join(t_data *data)
-{
-	int		i;
-	t_philo	*p;
-
-	p = data->philo_tab;
-	i = 0;
-	while (i < data->arg.nb_of_philo)
-	{
-		pthread_join(p->th, 0);
-		i++;
-		p++;
-	}
-}
-
-void	ft_destroy(t_data *data)
-{
-	int		i;
-
-	pthread_mutex_destroy(&data->print_mutex);
-	i = 0;
-	while (i < data->arg.nb_of_philo)
-	{
-		pthread_mutex_destroy(&data->fork_tab[i].mutex);
-		i++;
-	}
-	free(data->philo_tab);
-	free(data->fork_tab);
-}
-
-void	ft_set_arg(t_arg *arg, int argc, char **argv)
-{
-	arg->nb_of_philo = ft_atoi(argv[1]);
-	arg->t_to_die = ft_atoi(argv[2]);
-	arg->t_to_eat = ft_atoi(argv[3]);
-	arg->t_to_sleep = ft_atoi(argv[4]);
-	if (argc == 6)
-		arg->nb_of_meal = ft_atoi(argv[5]);
-	else
-		arg->nb_of_meal = -1;
-}
 
 int	main(int argc, char **argv)
 {

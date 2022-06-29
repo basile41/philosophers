@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/27 13:57:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:47:57 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,18 @@ void	ft_eating(t_philo *p);
 void	ft_start_to_sleep(t_philo *p);
 void	ft_sleeping(t_philo *p);
 void	ft_sleep(t_philo *p, int sleep_time);
+void	ft_threads_join(t_data *data);
+void	ft_destroy(t_data *data);
 
 //utils
 
 int		ft_atoi(const char *str);
+int		ft_atol(const char *str);
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dst, const char *src);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 void	*ft_calloc(size_t count, size_t size);
-
 
 int		ft_return_error(char *message);
 int		ft_get_time(int start);

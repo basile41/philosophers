@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:47:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/28 12:10:47 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/29 15:50:06 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ void	*ft_philo_routine(void *arg)
 	p = (t_philo *)arg;
 	if (p->id % 2 == 0)
 		ft_sleep(p, p->arg.t_to_eat);
-	// else if (p->id == p->arg.nb_of_philo)
-	// 	usleep(10000 + p->arg.t_to_eat);
-	// ft_safe_print(p->id, "coucou", p->print_mutex);
 	p->last_meal = 0;
 	while (42)
 	{
@@ -51,7 +48,7 @@ void	*ft_philo_routine(void *arg)
 			ft_start_to_sleep(p);
 		else if (p->state == SLEEPING)
 			ft_sleeping(p);
-		if (ft_get_time(p->last_meal) >= p->arg.t_to_die)
+		if (ft_get_time(p->last_meal) > p->arg.t_to_die)
 			ft_die(p);
 		usleep(100);
 		if (ft_is_end(p))
