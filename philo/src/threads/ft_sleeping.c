@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:07:24 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/28 14:06:34 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:09:43 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ void	ft_sleep(t_philo *p, int sleep_time)
 	int	time_to_die;
 
 	time_to_die = p->arg.t_to_die - ft_get_time(p->last_meal);
+	// printf("sleep time : %d\n", sleep_time);
+	// printf("time_to_die : %d\n", time_to_die);
 	if (time_to_die < sleep_time)
 		sleep_time = time_to_die;
-	usleep(990 * sleep_time);
+	if ((sleep_time) > 0)
+		usleep(990 * sleep_time);
 }
 
 void	ft_sleeping(t_philo *p)
@@ -44,9 +47,10 @@ void	ft_sleeping(t_philo *p)
 	{
 		p->state = THINKING;
 		ft_safe_print(p, "is thinking");
-		if (p->arg.nb_of_philo % 2)
-			usleep(100);
 	}
 	else
-		ft_sleep(p, sleep_time);
+	{
+		if (sleep_time > 0)
+			ft_sleep(p, sleep_time);
+	}
 }

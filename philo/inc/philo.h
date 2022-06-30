@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:58 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/29 13:47:57 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:14:29 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ typedef struct s_data
 }	t_data;
 
 int		ft_init(t_data *data);
+
+//Parsing
+int		ft_parsing(t_arg *arg, int argc, char **argv);
+void	ft_error_args(char *arg);
 
 //threads
 
