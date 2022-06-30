@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:47:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/30 19:40:40 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/30 20:10:19 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	*ft_philo_routine(void *arg)
 	p = (t_philo *)arg;
 	if (p->arg.nb_of_philo == 1)
 		return (ft_one_philo(p));
-	// if (p->id % 2 == 0)
-	// 	ft_sleep(p, p->arg.t_to_eat);
+	if (p->id % 2 == 0)
+		ft_sleep(p, p->arg.t_to_eat);
 	p->last_meal = 0;
 	while (42)
 	{
