@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:47:42 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/30 18:48:53 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:40:40 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,21 @@ int	ft_is_end(t_philo *p)
 	return (r);
 }
 
+void	*ft_one_philo(t_philo *p)
+{
+	ft_safe_print(p, "has taken a fork");
+	usleep(1000 * p->arg.t_to_die);
+	ft_die(p);
+	return (0);
+}
+
 void	*ft_philo_routine(void *arg)
 {
 	t_philo	*p;
 
 	p = (t_philo *)arg;
+	if (p->arg.nb_of_philo == 1)
+		return (ft_one_philo(p));
 	// if (p->id % 2 == 0)
 	// 	ft_sleep(p, p->arg.t_to_eat);
 	p->last_meal = 0;
@@ -48,8 +58,7 @@ void	*ft_philo_routine(void *arg)
 			ft_start_to_sleep(p);
 		else if (p->state == SLEEPING)
 			ft_sleeping(p);
-		// printf ("coucou\n");
-		if (ft_get_time(p->last_meal) > p->arg.t_to_die)
+		if (ft_get_time(p->last_meal) >= p->arg.t_to_die)
 			ft_die(p);
 		usleep(100);
 		if (ft_is_end(p))

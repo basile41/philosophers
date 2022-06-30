@@ -6,18 +6,18 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 15:28:47 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/27 14:18:43 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:48:24 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_create_philos(t_philo *p)
+void	ft_create_philos(t_philo *p, t_arg *arg)
 {
 	int	i;
 
 	i = 0;
-	while (i < p->arg.nb_of_philo)
+	while (i < arg->nb_of_philo)
 	{
 		pthread_create(&p->th, 0, ft_philo_routine, (void *)p);
 		p++;
@@ -51,6 +51,6 @@ int	ft_init(t_data *data)
 		i++;
 		p++;
 	}
-	ft_create_philos(data->philo_tab);
+	ft_create_philos(data->philo_tab, &data->arg);
 	return (0);
 }
