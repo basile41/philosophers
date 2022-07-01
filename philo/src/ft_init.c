@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 15:28:47 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/30 19:48:24 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:30:15 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,10 @@ void	ft_create_philos(t_philo *p, t_arg *arg)
 	}
 }
 
-int	ft_init(t_data *data)
+void	ft_init_philo(t_data *data, t_philo *p)
 {
-	int		i;
-	t_philo	*p;
+	int	i;
 
-	p = ft_calloc(data->arg.nb_of_philo, sizeof(t_philo));
-	data->fork_tab = ft_calloc(data->arg.nb_of_philo, sizeof(t_fork));
-	if (p == NULL || data->fork_tab == NULL)
-		return (ft_return_error("malloc error"));
-	data->philo_tab = p;
-	pthread_mutex_init(&data->print_mutex, 0);
 	i = 0;
 	while (i < data->arg.nb_of_philo)
 	{
@@ -51,6 +44,19 @@ int	ft_init(t_data *data)
 		i++;
 		p++;
 	}
+}
+
+int	ft_init(t_data *data)
+{
+	t_philo	*p;
+
+	p = ft_calloc(data->arg.nb_of_philo, sizeof(t_philo));
+	data->fork_tab = ft_calloc(data->arg.nb_of_philo, sizeof(t_fork));
+	if (p == NULL || data->fork_tab == NULL)
+		return (ft_return_error("malloc error"));
+	data->philo_tab = p;
+	pthread_mutex_init(&data->print_mutex, 0);
+	ft_init_philo(data, p);
 	ft_create_philos(data->philo_tab, &data->arg);
 	return (0);
 }

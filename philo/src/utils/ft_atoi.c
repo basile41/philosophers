@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 21:36:46 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/29 13:59:13 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:22:24 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	ft_atol(const char *str)
 	}
 	return (i * s);
 }
-
 
 int	ft_atoi(const char *str)
 {
