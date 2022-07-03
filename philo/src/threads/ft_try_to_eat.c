@@ -6,7 +6,7 @@
 /*   By: bregneau <bregneau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 19:03:56 by bregneau          #+#    #+#             */
-/*   Updated: 2022/06/30 19:49:29 by bregneau         ###   ########.fr       */
+/*   Updated: 2022/07/03 15:29:32 by bregneau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int	ft_take_fork(t_philo *p, t_fork *fork)
 
 void	ft_try_to_eat(t_philo *p)
 {
+	if (p->eaten && p->arg.nb_of_philo % 2
+		&& p->arg.t_to_eat > p->arg.t_to_sleep
+		&& ft_get_time(p->last_meal) <= p->arg.t_to_eat * 2)
+		return (ft_sleep(p, p->arg.t_to_eat * 2 - ft_get_time(p->last_meal)));
 	if (p->id % 2 == 0)
 	{
 		if (p->hand[RIGHT] == 0)
